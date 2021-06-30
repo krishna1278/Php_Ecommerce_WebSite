@@ -1,99 +1,76 @@
 
-<div class="login_box">
 
-  <form method = "post" action="">
+<?php session_start(); ?>
+
+<head>
+<meta charset="UTF-8">
+<title>Log In</title>
+
+<link rel="stylesheet" href="styles/admin_form_login.css" />
+
+</head>
+
+<body>
+
+<nav><a href="#" class="focus">Log In</a></nav>
+
+<form action="" method="post" enctype="multipart/form-data">
+
+	<h2>Admin Login</h2>
+
+	<input type="text" name="email" class="text-field" placeholder="Email" />
+    <input type="password" name="password" class="text-field" placeholder="Password" />
     
-	<table align="left" width="70%">
-	
-	  <tr align="left">	   
-	   <td colspan="4">
-	   <h2>Login.</h2><br />
-	   <span>
-	     Don't have account? <a href="register.php">Register Here</a><br /><br />
-	   </span>
-	   </td>	   
-	  </tr>
-	  
-	  <tr>
-	   <td width="15%"><b>Email:</b></td>
-	   <td colspan="3"><input type="text" name="email" required placeholder="Email" /></td>
-	  </tr>
-	  
-	  <tr>
-	   <td width="15%"><b>Password:</b></td>
-	   <td colspan="3"><input type="password" name="password" required placeholder="Password" /></td>
-	  </tr>
-	  
-	  <tr align="left">
-	   <td></td>
-	   <td colspan="4">
-	   <a href="checkout.php?forgot_pass">
-	     Forgot Password
-	   </a>
-	   <br /><br />
-	   </td>
-	  </tr>
-	  
-	  <tr align="left">
-	   <td></td>
-	   <td colspan="4">
-	   <input type="submit" name="login" value="Login" />
-	   </td>
-	  </tr>
-	
-	</table>
-	
-	
-  </form>
+    <input type="submit" name="login"  class="button" value="Log In" />
 
-</div>
+</form>
+
+</body>
 
 <?php 
-if(isset($_POST['login'])){
-  
-  $email = trim($_POST['email']);
-  $password = trim($_POST['password']);
-  $password = md5($password);
-  
-  $run_login = mysqli_query($con, "select * from users where password='$password' AND email='$email' " );
-  
-  $check_login = mysqli_num_rows($run_login);
-  
-  $row_login = mysqli_fetch_array($run_login);
-  
-  if($check_login == 0){
-   echo "<script>alert('Password or email is incorrect, please try again!')</script>";
-   exit();
-  }
-  $ip = get_ip();
-  
-  $run_cart = mysqli_query($con, "select * from cart where ip_address='$ip'");
-  
-  $check_cart = mysqli_num_rows($run_cart);
-  
-  if($check_login > 0 AND $check_cart==0){
-  
-  $_SESSION['user_id'] = $row_login['id'];
-  
-  $_SESSION['role'] = $row_login['role'];
-  
-  $_SESSION['email'] = $email;
-  echo "<script>alert('You have logged in successfully !')</script>";
-  echo "<script>window.open('customer/my_account.php','_self')</script>";
-  
-  }else{
-  $_SESSION['user_id'] = $row_login['id'];
-  
-  $_SESSION['role'] = $row_login['role'];
-  
-  $_SESSION['email'] = $email;
-  echo "<script>alert('You have logged in successfully !')</script>";
-  echo "<script>window.open('checkout.php','_self')</script>";
-  }
-  
-}
 
+ include('../includes/db.php');
+
+ if(isset($_POST['login'])){
+ 
+ $email = trim(mysqli_real_escape_string($con,$_POST['email']));
+ 
+ $password = trim(mysqli_real_escape_string($con,$_POST['password']));
+ 
+ $hash_password = md5($password);
+ 
+ $sel_user = "select * from users where email ='$email' AND password='$hash_password' ";
+ 
+ $run_user = mysqli_query($con, $sel_user) or die ("error: " . mysqli_error($con));
+ 
+ $check_user = mysqli_num_rows($run_user);
+ 
+ if($check_user > 0){
+ 
+ $db_row = mysqli_fetch_array($run_user);
+ 
+ $_SESSION['email'] = $db_row['email']; 
+ $_SESSION['name'] = $db_row['name'];
+ $_SESSION['user_id'] = $db_row['id'];
+ $_SESSION['role'] = $db_row['role'];
+ 
+ if($db_row['role'] =='admin'){
+ 
+ echo "<script>window.open('index.php?logged_in=You have successfully Logged In!','_self')</script>";
+ 
+ }elseif($db_row['role'] =='guest'){
+ echo "<script>alert('Password or Email is wrong, your are guest not admin!')</script>";
+ 
+ }
+ 
+ }else{
+ echo "<script>alert('Password or Email is wrong, try again!')</script>";
+ 
+ }
+ 
+ }
 ?>
+
 
 
 

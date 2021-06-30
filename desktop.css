@@ -1,0 +1,196 @@
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	//font-size: 100%;
+	//font: inherit;
+	//vertical-align: baseline;
+}
+
+.container{
+  width:100%;
+  max-width:auto;
+  float:none;
+  clear:none;
+  padding:0;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.header{
+  height:40px;
+  background:rgba(250, 250, 250,0.7);
+  border:0.01px solid rgba(235, 235, 235,0.9);
+  padding:15px;
+}
+.navbar-header{
+  width:40%;
+  float:left;
+}
+a.admin_name{
+  text-decoration:none;
+  color:gray;
+}
+.navbar-right-header{
+  width:60%;
+  float:left;
+}
+.navbar-right-header ul{
+  list-style:none;
+  cursor:pointer;
+  margin:0 15px;
+}
+ul.dropdown-navbar-right{
+  float:right;
+  width:auto;
+  position:relative;
+}
+ul.dropdown-navbar-right ul{
+  list-style:none;
+  position:absolute;
+  right:-10px;
+  display:none;
+  width:auto;
+  white-space:nowrap;
+  background:white;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19);
+}
+ul.dropdown-navbar-right ul li{
+  padding:5px 15px;
+}
+ul.dropdown-navbar-right ul li:hover{
+  background:rgba(245,245,245,1);
+}
+
+.body_container{
+ width:100%;
+ clear:both;
+}
+.left_sidebar{
+ width:25%;
+ float:left;
+ background:rgba(250, 250, 250,0.7);
+ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2), 0 2px 10px 0 rgba(0,0,0,0.19);
+}
+.left_sidebar_box{
+ padding-bottom:55px;
+}
+
+.content{
+ width:75%;
+ float:left;
+}
+.content_box{
+ padding:15px;
+}
+
+/* Left Sidebar Here */
+.left_sidebar_box ul{
+  position:relative;
+  display:block;
+  width:auto;
+}
+.left_sidebar_box ul li{
+  line-height:40px;
+  position:relative;
+}
+.arrow{
+  position:absolute;
+  top:13px;
+  right:1px;
+  padding:0 10px 0 3px;
+}
+.left_sidebar_box ul a{
+  padding:5px 15px;
+  color:rgba(2, 133, 173, 1);
+  text-decoration:none;
+  font-weight:bold;
+}
+.left_sidebar_box ul li:hover{
+  background:rgba(0,0,0,0.07);
+}
+.left_sidebar_box ul ul li{
+  position:relative;
+}
+.left_sidebar_box ul ul li:hover{
+  background:rgba(0,0,0,0.03);
+}
+.left_sidebar_box ul ul li a{
+  margin-left:20px;
+}
+/* Left Sidebar Ends */
+
+
+/** Add Product Here */
+.border_bottom{
+  border-bottom:0.01px solid rgba(0,0,0,0.2);
+  margin:10px 0;
+}
+.form_box input[type=text]{
+  padding:3px 10px;
+  margin:5px 0;
+}
+.form_box select{
+  width:40%;
+  padding:3px 10px;
+  margin:5px 0;
+}
+.form_box input[type=file]{
+  margin:5px 0;
+}
+.form_box textarea{
+ width:80%;
+}
+.form_box input[type=submit]{
+ padding:10px 15px;
+ background: rgba(28, 130, 199, 0.9);
+ border: 0.01px solid rgba(28, 130, 199,0.8);
+ color:white;
+}
+
+/** Add Product Ends */
+
+/** View Product Starts **/
+
+.search_bar{
+  float:right;
+  margin-bottom:15px;
+}
+.search_bar input[type=text]{
+  padding:3px 7px;
+}
+.view_product_box th, .view_product_box td{
+  text-align:left;
+}
+.view_product_box input[type=submit]{
+ padding:10px 15px;
+ background: rgba(250, 32, 32, 0.9);
+ border: 0.01px solid rgba(250, 32, 32, 0.9);
+ color:white;
+}
+/** View Product Ends **/
+
+
+
+
+
+
+
+
+
+
+
